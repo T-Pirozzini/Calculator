@@ -1,20 +1,30 @@
-const addition = document.getElementById('add');
-const subtraction = document.getElementById('subtract');
-const multiplication = document.getElementById('multiply');
-const division = document.getElementById('divide');
+//START-STATE
+let currentOperator = null;
+let firstInput = null;
+let secondInput = null;
+let clear = false;
+let result = null;
 
-addition.onclick = () => console.log('Hello'); // <---This works
-/*subtraction.onclick = () => operate(a, b, operator);
-multiplication.onclick = () => operate(a, b, operator);
-division.onclick = () => operate(a, b, operator); */
+//DISPAY
+const displayArea = document.getElementById('display-area');
+const numberButtons = document.querySelectorAll('.numButton')
+const decimal = document.getElementById('decimal');
 
+//OPERATORS
+const operators = document.querySelectorAll('.operator');
+const powerOf = document.getElementById('power');
+const equalSign = document.getElementById('equal');
+const clearSign = document.getElementById('clear');
+const backSign = document.getElementById('back');
 
 //MATH OPERATORS
 add = (a, b) => a + b;
 subtract = (a, b) => a - b;
 multiply = (a, b) => a * b;
 divide = (a, b) => a / b;
+power = (a, b) => a ** b;
 
+//CALCULATE
 operate = (a, b, operator) => {
     switch(operator) {
         case "add":
@@ -29,14 +39,106 @@ operate = (a, b, operator) => {
         case "divide":
           return divide(a,b);
           break;
+        case "power":
+          return power(a,b);
+          break;
+        default:
+          return null;
     }
 }
 
+//DISPLAY VALUES
+displayValue = (value) => displayArea.textContent = displayArea.textContent + value;
+getDisplayValue = () => displayArea.textContent;
 
+function setOperator(operator) {
+  if (currentOperator == null) {
+    currentOperator = operator;
+  } else if (firstInput && secondInput) {
+    result = operate(Number(firstInput), Number(secondInput), currentOperator);
+    clearDisplay();
+    displayValue(result);
+    firstInput = result;
+    secondInput = null;
+    currentOperator = operator;
+  }
+}
+
+function setInput(value) {
+  if (firstInput == null) {
+    firstInput = value;
+  } else {
+    secondInput = value;
+  }
+}
+
+function clearDisplay() {
+  displayArea.textContent = "";
+}
+
+function clearAllValues() {
+  firstInput = null;
+  secondInput = null;
+  currentOperator = null;
+  clearDisplay();
+}
+
+function clearPreviousValue() {
+  let firstInput ='';
+  }
+
+
+function generateResult() {
+  if (firstInput && currentOperator && !clear && !secondInput) {
+    setInput(getDisplayValue());
+    return operate(Number(firstInput), Number(secondInput), currentOperator);
+  } else {
+    return false;
+  }
+}
+
+
+//EVENT LISTENERS
+numberButtons.forEach((numberButton) => {
+  numberButton.addEventListener('click', (e) => {    
+    if (clear) {
+      clearDisplay();
+    }
+    displayValue(e.target.textContent);
+    clear = false;
+  })
+})
+
+operators.forEach((operator) => {
+  operator.addEventListener('click', (e) => {
+    setInput(getDisplayValue());
+    setOperator(e.target.id);
+    clear = true;
+  })
+})
+
+equalSign.addEventListener("click", () => {
+  result = generateResult();
+  clearDisplay();
+  if (result) {
+    displayValue(result);
+  }
+})
+ 
+
+clearSign.addEventListener('click', () => {
+  clearAllValues();
+});
+
+// BELOW NOT WORKING YET
+backSign.addEventListener('click', () => {
+  displayValue('666');
+    clear = false;
+});
 /*
-console.log(operate(5, 4, 'add'));
-console.log(operate(5, 4, 'subtract'));
-console.log(operate(5, 4, 'multiply'));
-console.log(operate(5, 4, 'divide')); */
-
-
+function clearPreviousInput() {
+  firstInput.textContent = firstInput.textContent
+    .toString()
+    .slice(0, -1)
+}
+*/

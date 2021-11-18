@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+
+/* HEADING/BODY */
+body {
+    background-color: rgb(221, 216, 216);
+}
+
+h1 {    
+    text-align: center;    
+    font-family: monospace;
+    margin-bottom: 55px; 
+    font-size: 30px;
+}
+
+
+/* MAIN CONTENT */
+main {
+    background-color: rgb(118, 205, 216);
+    border: 2px solid rgb(5, 166, 206);
+    width: 340px;
+    padding-bottom: 20px;
+    margin: 50px auto;
+    box-shadow: 5px 10px #888888;
+}
+
+.type-area {
+    background-color: rgb(236, 236, 184);
+    border: 2px solid rgb(233, 226, 137);
+    width: 300px;
+    padding: 20px 20px 20px;
+    margin: 0 auto;        
+}
+
+.display {
+    display: grid;
+    overflow: hidden; /* FIGURE OUT WHAT THIS DOES */
+    justify-items: end; /* MAKES ALL NUMBER DISPLAY ON FAR RIGHT */
+    height: 60px;
+    width: 260px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: rgba(156, 168, 168, 0.952);
+    border: 2px solid rgb(121, 121, 120);
+    color: rgb(26, 23, 23);
+    font-family: monospace;  
+    font-size: 25px; 
+}
+
+.button-container {
+    display: grid;
+    gap: 10px 10px;
+    height: 300px;    
+    
+    grid-template-areas: 
+    'clear back percent divide'
+    'seven eight nine multiply'
+    'four five six subtract'
+    'one two three add'
+    'zero decimal equal add';
+
+    justify-content: space-around;
+    padding: 10px;  
+    
+}
+
+/* BUTTON STYLES */
+#equal {
+    background-color: rgb(204, 77, 3);    
+}
+
+#power {
+    background-color: rgba(255, 215, 85, 0.952) ;
+    color: black;
+}
+
+.clear, .back {
+    background-color: rgb(243, 64, 64);
+}
+
+#equal {
+    grid-area: equal; /* NOT WORKING */
+  }
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(58, 49, 58);
+    color:rgb(237, 243, 237);
+    border-radius: 5px;
+    width: 50px;
+    font-size: 25px;
+}
+
+.operator {
+    background-color: rgb(226, 131, 43);
+    color: black
+    border-radius: 15px;
+}
+
+
+/* BUTTON TRANSFORM/HOVER ETC */
+
+button:hover {
+    border: 2px outset;    
+}
+
+
+
+/* GRID LAYOUT */
+  #seven {
+    grid-area: seven;
+  }  
+  #eight {
+    grid-area: eight;
+  }  
+  #nine {
+    grid-area: nine;
+  }  
+  #add {
+    grid-area: add;
+  }  
+  #four {
+    grid-area: four;
+  }  
+  #five {
+    grid-area: five;
+  }  
+  #six {
+    grid-area: six;
+  }  
+  #subtract {
+    grid-area: subtract;
+  }  
+  #one {
+    grid-area: one;
+  }  
+  #two {
+    grid-area: two;
+  }  
+  #three {
+    grid-area: three;
+  }  
+  #multiply {
+    grid-area: multiply;
+  }  
+  #zero {
+    grid-area: zero;
+  }  
+  #clear {
+    grid-area: clear;
+  }  
+  #equal {
+    grid-area: equal;
+  }  
+  #divide {
+    grid-area: divide;
+  }
+  #percent {
+    grid-area: percent;
+  }
+  #decimal {
+    grid-area: decimal;
+  }
+  #back {
+    grid-area: back;
+  }
