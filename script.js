@@ -130,7 +130,7 @@ clearSign.addEventListener('click', () => {
   clearAllValues();
 });
 
-// BELOW NOT WORKING YET
+// BELOW NOT WORKING YET - ADDED ? Event in the meantime
 backSign.addEventListener('click', () => {
   displayValue('666');
     clear = false;
