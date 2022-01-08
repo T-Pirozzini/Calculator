@@ -84,7 +84,7 @@ function clearAllValues() {
 }
 
 function clearPreviousValue() {
-  let firstInput ='';
+  
   }
 
 
@@ -133,7 +133,7 @@ clearSign.addEventListener('click', () => {
 // BELOW NOT WORKING YET - ADDED ? Event in the meantime
 backSign.addEventListener('click', () => {
   displayValue('666');
-    clear = false;
+  //clearPreviousValue();
 });
 /*
 function clearPreviousInput() {
