@@ -4,7 +4,6 @@ let firstInput = null;
 let secondInput = null;
 let clear = false;
 let result = null;
-let displayCounter = 0;
 
 //DISPAY
 const displayArea = document.getElementById('display-area');
