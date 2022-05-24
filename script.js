@@ -97,7 +97,6 @@ const generateResult = () => {
   }
 }
 
-
 //EVENT LISTENERS
 numberButtons.forEach((numberButton) => {
   numberButton.addEventListener('click', (e) => {    
@@ -130,15 +129,7 @@ clearSign.addEventListener('click', () => {
   clearAllValues();
 });
 
-// BELOW NOT WORKING YET - ADDED ? Event in the meantime
 backSign.addEventListener('click', () => {
-  displayValue('666');
-  //clearPreviousValue();
+  console.log(typeof displayArea)   
+  displayArea.textContent = displayArea.textContent.slice(0,-1); 
 });
-/*
-function clearPreviousInput() {
-  firstInput.textContent = firstInput.textContent
-    .toString()
-    .slice(0, -1)
-}
-*/
