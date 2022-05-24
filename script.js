@@ -25,33 +25,33 @@ const divide = (a, b) => a / b;
 const power = (a, b) => a ** b;
 
 //CALCULATE
-operate = (a, b, operator) => {
-    switch(operator) {
-        case "add":
-          return add(a,b);
-          break;
-        case "subtract":
-          return subtract(a,b);
-          break;
-        case "multiply":
-          return multiply(a,b);
-          break;
-        case "divide":
-          return divide(a,b);
-          break;
-        case "power":
-          return power(a,b);
-          break;
-        default:
-          return null;
-    }
+const operate = (a, b, operator) => {
+  switch(operator) {
+    case "add":
+      return add(a,b);
+      break;
+    case "subtract":
+      return subtract(a,b);
+      break;
+    case "multiply":
+      return multiply(a,b);
+      break;
+    case "divide":
+      return divide(a,b);
+      break;
+    case "power":
+      return power(a,b);
+      break;
+    default:
+      return null;
+  }
 }
 
 //DISPLAY VALUES
-displayValue = (value) => displayArea.textContent = displayArea.textContent + value;
-getDisplayValue = () => displayArea.textContent;
+const displayValue = (value) => displayArea.textContent = displayArea.textContent + value;
+const getDisplayValue = () => displayArea.textContent;
 
-function setOperator(operator) {
+const setOperator = (operator) => {
   if (currentOperator == null) {
     currentOperator = operator;
   } else if (firstInput && secondInput) {
@@ -64,7 +64,7 @@ function setOperator(operator) {
   }
 }
 
-function setInput(value) {
+const setInput = (value) => {
   if (firstInput == null) {
     firstInput = value;
   } else {
@@ -72,23 +72,23 @@ function setInput(value) {
   }
 }
 
-function clearDisplay() {
+const clearDisplay = () => {
   displayArea.textContent = "";
 }
 
-function clearAllValues() {
+const clearAllValues = () => {
   firstInput = null;
   secondInput = null;
   currentOperator = null;
   clearDisplay();
 }
 
-function clearPreviousValue() {
+const clearPreviousValue = () => {
   
   }
 
 
-function generateResult() {
+const generateResult = () => {
   if (firstInput && currentOperator && !clear && !secondInput) {
     setInput(getDisplayValue());
     return operate(Number(firstInput), Number(secondInput), currentOperator);
