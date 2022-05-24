@@ -4,6 +4,7 @@ let firstInput = null;
 let secondInput = null;
 let clear = false;
 let result = null;
+let displayCounter = 0;
 
 //DISPAY
 const displayArea = document.getElementById('display-area');
@@ -83,13 +84,8 @@ const clearAllValues = () => {
   clearDisplay();
 }
 
-const clearPreviousValue = () => {
-  
-  }
-
-
 const generateResult = () => {
-  if (firstInput && currentOperator && !clear && !secondInput) {
+  if (firstInput && currentOperator && !clear) {
     setInput(getDisplayValue());
     return operate(Number(firstInput), Number(secondInput), currentOperator);
   } else {
@@ -102,8 +98,9 @@ numberButtons.forEach((numberButton) => {
   numberButton.addEventListener('click', (e) => {    
     if (clear) {
       clearDisplay();
-    }
+    }   
     displayValue(e.target.textContent);
+    console.log(displayCounter)
     clear = false;
   })
 })
@@ -112,24 +109,30 @@ operators.forEach((operator) => {
   operator.addEventListener('click', (e) => {
     setInput(getDisplayValue());
     setOperator(e.target.id);
+    displayValue(e.target.textContent);
     clear = true;
   })
 })
 
 equalSign.addEventListener("click", () => {
   result = generateResult();
-  clearDisplay();
-  if (result) {
-    displayValue(result);
-  }
-})
- 
+  clearDisplay(); 
+  displayValue(result);  
+}) 
 
 clearSign.addEventListener('click', () => {
   clearAllValues();
+  displayCounter = 0;
 });
 
-backSign.addEventListener('click', () => {
-  console.log(typeof displayArea)   
-  displayArea.textContent = displayArea.textContent.slice(0,-1); 
+backSign.addEventListener('click', () => {  
+  displayArea.textContent = displayArea.textContent.slice(0,-1) 
+});
+
+decimal.addEventListener('click', (e) => {
+  if (displayArea.textContent.includes('.')) {    
+    return
+  }
+  displayValue(e.target.textContent)
+  clear = false
 });
