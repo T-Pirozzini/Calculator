@@ -18,11 +18,11 @@ const clearSign = document.getElementById('clear');
 const backSign = document.getElementById('back');
 
 //MATH OPERATORS
-add = (a, b) => a + b;
-subtract = (a, b) => a - b;
-multiply = (a, b) => a * b;
-divide = (a, b) => a / b;
-power = (a, b) => a ** b;
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
+const power = (a, b) => a ** b;
 
 //CALCULATE
 operate = (a, b, operator) => {

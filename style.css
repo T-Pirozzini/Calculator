@@ -169,4 +169,6 @@ button:hover {
   }
   #back {
     grid-area: back;
+    color: white;
+    background-color: white;
   }
